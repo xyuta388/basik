@@ -1,0 +1,511 @@
+body {
+    font-family: cursive;
+    justify-content: center;
+    align-items: center;
+    min-height: 150vh;
+    width: 100%;
+    background: url(assets/image/fon.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+
+/* Общий фон */
+
+.logot {
+    position: absolute;
+    top: 8%;
+    left: 43%;
+    overflow: hidden;
+}
+
+
+/* Слайдер */
+
+.slider {
+    position: absolute;
+    /* Позиционируется относительно .fon */
+    top: 47%;
+    /* Размещение по центру вертикали */
+    left: 50%;
+    /* Размещение по центру горизонтали */
+    transform: translate(-50%, -50%);
+    /* Корректировка позиции */
+    width: 100%;
+    /* Ширина слайдера */
+    max-width: 860px;
+    /* Максимальная ширина */
+    height: 420px;
+    /* Высота слайдера */
+    overflow: hidden;
+    /* Скрываем лишние элементы */
+    border-radius: 20px;
+    /* Закругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* Тень */
+}
+
+
+/* Радиокнопки (скрытые контроллеры) */
+
+input[name="slide"] {
+    display: none;
+    /* Скрываем радиокнопки */
+}
+
+
+/* Слайды */
+
+.slides {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    /* Анимация перехода между слайдами */
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    /* Каждый слайд занимает всю ширину */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Управление видимостью слайдов через радиокнопки */
+
+#slide1:checked~.slides {
+    transform: translateX(0%);
+}
+
+#slide2:checked~.slides {
+    transform: translateX(-100%);
+}
+
+#slide3:checked~.slides {
+    transform: translateX(-200%);
+}
+
+
+/* Индикаторы */
+
+.indicators {
+    position: absolute;
+    bottom: 20px;
+    /* Расположение индикаторов внизу слайдера */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.indicators label {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+/* Подсветка активного индикатора */
+
+#slide1:checked~.indicators label:nth-child(1),
+#slide2:checked~.indicators label:nth-child(2),
+#slide3:checked~.indicators label:nth-child(3) {
+    background-color: #ff5722;
+    /* Цвет активного индикатора */
+}
+
+
+/* Навигационная панель */
+
+.navbar {
+    position: fixed;
+    /* Изменяем на fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #7c7b7b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    /* Чтобы навигация была поверх всего */
+    /* Убираем background-attachment, так как оно не нужно для фиксированной панели */
+}
+
+.navbar .container {
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-menu {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.navbar-menu li {
+    display: inline-block;
+    text-align: left;
+    /* Выравнивание элементов списка влево */
+}
+
+.navbar-menu li a {
+    font-weight: 700;
+    font-size: 20px;
+    display: inline-block;
+    color: #000;
+    opacity: 0.6;
+    text-decoration: none;
+    padding: 10px;
+    transition: all 0.7s ease-in-out;
+    text-align: left;
+    /* Добавлено для выравнивания текста влево */
+    padding-left: 30px;
+    /* При необходимости добавьте отступ для лучшего внешнего вида */
+    padding-right: 30px;
+    /* При необходимости добавьте отступ для лучшего внешнего вида */
+}
+
+.navbar-menu li a:hover {
+    opacity: 1;
+}
+
+.navbar-wrap {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 26px;
+    text-decoration: none;
+    color: black;
+    transition: all 0.7s ease-in-out;
+    text-align: left;
+    /* Добавлено для выравнивания текста влево */
+    padding-left: 20px;
+    /* При необходимости добавьте отступ для лучшего внешнего вида */
+}
+
+.opisaniu {
+    position: absolute;
+    top: 92%;
+    left: 25%;
+    overflow: hidden;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 100rem;
+}
+
+.viz,
+.viz2,
+.viz3,
+.viz4 {
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 100rem;
+    /* Плавная анимация */
+}
+
+
+/* Анимация при наведении */
+
+.viz:hover,
+.viz2:hover,
+.viz3:hover,
+.viz4:hover {
+    transform: scale(1.2);
+    /* Увеличиваем размер на 20% */
+    box-shadow: 15px 25px 40px rgba(0, 0, 0, 0.6);
+    /* Большая тень для эффекта */
+}
+
+
+/* Позиционирование элементов */
+
+.viz {
+    top: 78%;
+    left: 40%;
+}
+
+.viz2 {
+    top: 78%;
+    left: 60%;
+}
+
+.viz3 {
+    top: 98%;
+    /* Опущено ниже */
+    left: 60%;
+}
+
+.viz4 {
+    top: 98%;
+    /* Опущено ниже */
+    left: 40%;
+}
+
+.containers {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 15px;
+    margin: 0 auto;
+    background-color: transparent; /* Ensure no background bleed */
+}
+
+.container__cards {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, 225px);
+    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
+    column-gap: 100px;
+    row-gap: 200px;
+    margin-top: 750px;
+    background-color: transparent; /* Ensure no background bleed */
+}
+
+.card {
+    position: relative;
+    width: 250px;
+    height: 380px;
+    perspective: 30rem;
+    transform-style: preserve-3d; /* Preserve 3D space */
+    text-align: center;
+    background-color: transparent; /* Ensure no background bleed */
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    margin-top: 3px;
+    max-width: 92%;
+    border-radius: 20px;
+    display: block;
+    object-fit: cover;
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 25px;
+    padding: 1rem;
+    border: none; /* Ensure no borders */
+    outline: none; /* Ensure no outlines */
+    box-shadow: none; /* Disable box shadow */
+}
+
+.front {
+    background: #7c7777; /* Solid color */
+    color: #000000;
+    transform: rotateY(0deg); /* Explicitly set initial rotation */
+    
+}
+
+.back {
+    background: #5e5b5b; /* Solid color */
+    color: #fff;
+    transform: rotateY(180deg); /* Explicitly set initial rotation */
+}
+
+.card:hover .front {
+    transform: rotateY(180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(360deg);
+}
+.name-product {
+    margin-top: -3px;
+    font-size: 18px;
+}
+
+.price {
+    margin-top: -10px;
+    font-size: 18px;
+}
+
+.text-main {
+    position: absolute;
+    left: 53rem;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 45rem;
+    top: -3rem;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    .slider {
+        height: 250px;
+        max-width: 90%;
+    }
+    .opisaniu {
+        font-size: 24px;
+        top: 110%;
+        left: 10%;
+        margin-top: 60rem;
+    }
+    .viz,
+    .viz2,
+    .viz3,
+    .viz4 {
+        width: 120px;
+        height: auto;
+        margin-top: 60rem;
+        transform: none;
+    }
+    .viz {
+        top: 105%;
+        left: 20%;
+    }
+    .viz2 {
+        top: 105%;
+        left: 60%;
+    }
+    .viz3 {
+        top: 125%;
+        left: 20%;
+    }
+    .viz4 {
+        top: 125%;
+        left: 60%;
+    }
+    .text-main {
+        font-size: 24px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        margin-top: 65rem;
+        text-align: center;
+    }
+    .container__cards {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        row-gap: 100px;
+        column-gap: 50px;
+        margin-top: 500px;
+    }
+    .card {
+        width: 180px;
+        height: 300px;
+    }
+    .navbar-brand {
+        font-size: 20px;
+    }
+    .navbar-menu li a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider {
+        height: 200px;
+    }
+    .opisaniu {
+        font-size: 20px;
+        top: 115%;
+        left: 5%;
+    }
+    .viz,
+    .viz2,
+    .viz3,
+    .viz4 {
+        width: 100px;
+        margin-top: 50rem;
+    }
+    .text-main {
+        font-size: 20px;
+        margin-top: 60rem;
+    }
+    .container__cards {
+        grid-template-columns: 1fr;
+        row-gap: 80px;
+        margin-top: 400px;
+    }
+    .card {
+        width: 160px;
+        height: 260px;
+    }
+    .navbar {
+        height: auto;
+        padding: 10px 0;
+    }
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-menu li {
+        display: block;
+        margin: 5px 0;
+    }
+    .navbar-brand {
+        padding-left: 10px;
+    }
+}
+
+
+/* Бургер по умолчанию скрыт */
+
+.burger {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+}
+
+
+/* Мобильная адаптация */
+
+@media (max-width: 768px) {
+    .burger {
+        display: block;
+    }
+    .navbar-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #7c7b7b;
+        padding: 10px 0;
+    }
+    .navbar-menu li {
+        width: 100%;
+        text-align: left;
+    }
+    .navbar-menu li a {
+        display: block;
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .navbar-menu.active {
+        display: flex;
+    }
+}

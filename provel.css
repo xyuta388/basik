@@ -1,0 +1,102 @@
+/* Общие стили для темного выпадающего меню */
+.dark-theme-dropdown {
+    background: linear-gradient(145deg, #45456d, #6c6cc7); /* Градиентный фон */
+    border: 1px solid rgba(212, 212, 212, 0.1); /* Тонкая светлая граница */
+    border-radius: 12px; /* Скругленные углы */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Усиленная тень */
+    backdrop-filter: blur(10px); /* Эффект размытия фона */
+    overflow: hidden; /* Убираем артефакты скругления */
+    padding: 8px 0; /* Внутренние отступы для меню */
+}
+
+.dark-theme-dropdown .dropdown-item {
+    color: #e0e0e0; /* Светло-серый текст */
+    font-size: 14px; /* Размер шрифта */
+    padding: 12px 20px; /* Отступы внутри пунктов */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Плавные переходы */
+    position: relative; /* Для эффектов */
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Пространство между иконкой и текстом */
+    list-style: none; /* Убираем точки слева */
+    cursor: pointer; /* Курсор указывает на кликабельность */
+}
+
+.dark-theme-dropdown .dropdown-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Лёгкий эффект при наведении */
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.dark-theme-dropdown .dropdown-item:hover {
+    color: #ffffff; /* Белый текст при наведении */
+    background: linear-gradient(90deg, #4a4a6d, #3a3a52); /* Градиентный фон */
+}
+
+.dark-theme-dropdown .dropdown-item:hover::before {
+    width: 100%; /* Анимация заливки */
+}
+
+.dark-theme-dropdown .dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Полупрозрачный разделитель */
+    margin: 8px 0; /* Отступы вокруг разделителя */
+}
+
+.dark-theme-dropdown .dropdown-item:focus {
+    outline: none; /* Убираем стандартный фокус */
+    background: linear-gradient(90deg, #4a4a6d, #3a3a52); /* Цвет фона при фокусе */
+    color: #ffffff; /* Белый текст при фокусе */
+}
+
+/* Иконки для пунктов меню */
+.dark-theme-dropdown .dropdown-item svg {
+    width: 16px;
+    height: 16px;
+    fill: #e0e0e0; /* Цвет иконок */
+    transition: fill 0.3s ease;
+}
+
+.dark-theme-dropdown .dropdown-item:hover svg {
+    fill: #ffffff; /* Белые иконки при наведении */
+}
+
+/* Стиль для кнопки-триггера */
+.ai.nav-link.dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Пространство между текстом и иконкой */
+    color: #e0e0e0; /* Цвет текста триггера */
+    font-weight: 600; /* Жирность шрифта */
+    text-decoration: none; /* Убираем подчеркивание */
+    background: linear-gradient(145deg, #3a3a52, #4a4a6d); /* Градиентный фон кнопки */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая светлая граница */
+    border-radius: 8px; /* Скругленные углы */
+    padding: 8px 16px; /* Внутренние отступы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Плавные переходы */
+    cursor: pointer; /* Курсор указывает на кликабельность */
+}
+
+.ai.nav-link.dropdown-toggle:hover {
+    background: linear-gradient(145deg, #4a4a6d, #5a5a7d); /* Градиентный фон при наведении */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Усиленная тень */
+    transform: translateY(-2px); /* Легкий эффект "подпрыгивания" */
+    color: #ffffff; /* Белый текст при наведении */
+}
+
+.ai.nav-link.dropdown-toggle::after {
+    content: '▾'; /* Иконка стрелки */
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.ai.nav-link.dropdown-toggle:hover::after {
+    transform: rotate(180deg); /* Анимация поворота стрелки */
+}

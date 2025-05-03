@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #c7cdcf, #323333, #8c8e8f);
+}
+
+.conteners {
+    position: relative;
+    width: 800px;
+    height: 520px;
+    background: linear-gradient(135deg, #606161, #bdc4c4, #8c8e8f);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition: 0.5s ease;
+    left: 16%;
+    
+}
+
+
+.form-box {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    z-index: 1;
+    background: linear-gradient(135deg, #c7cdcf, #323333, #8c8e8f);
+    transition: 1s ease;
+    
+}
+
+.conteners.active .form-box {
+    right: 50%;
+}
+
+.form-box.register {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.conteners.active .form-box.register {
+    visibility: visible;
+    opacity: 1;
+}
+
+form {
+    width: 100%;
+}
+
+.conteners h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.input-box {
+    margin: 20px 0;
+}
+
+.input-box i {
+    position: absolute;
+    right: 44px;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 20px;
+    background: #404047;
+    border: 1px solid #555;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: #888;
+    background: #444;
+}
+
+.input-box input::placeholder {
+    color: #bbb;
+}
+
+.forgot-link {
+    margin: 10px 0;
+    text-align: right;
+}
+
+.forgot-link a {
+    font-size: 13px;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #7e8a9c;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: #404047;
+}
+
+.conteners p {
+    font-size: 14px;
+    margin: 15px 0;
+    color: #aaa;
+}
+.social-icons {
+    margin: 10px 0;
+    text-align: center;
+}
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    font-size: 20px;
+    color: #ddd;
+    margin: 0 5px;
+    transition: 0.3s ease;
+    
+    
+}
+
+.social-icons a:hover {
+    background: #444;
+}
+
+.toggle-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.toggle-box::before {
+    content: '';
+    position: absolute;
+    left: -50%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url('myreport/images/фон2.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 2;
+    /* ниже toggle-panel */
+    transition: 1s ease-in-out;
+    opacity: 0.9;
+    /* чуть темнее, чтобы не мешал тексту */
+}
+
+.conteners.active .toggle-box::before {
+    left: 50%;
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+    transition: .8s ease-in-out;
+}
+
+.toggle-panel.toggle-left {
+    left: 0;
+    transition-delay: 1.2s;
+}
+
+.conteners.active .toggle-panel.toggle-left {
+    left: -50%;
+    transition-delay: .5s;
+}
+
+.toggle-panel.toggle-right {
+    right: -50%;
+    transition-delay: .5s;
+}
+
+.conteners.active .toggle-panel.toggle-right {
+    right: 0;
+    transition-delay: 1.2s;
+}
+
+.toggle-panel h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.toggle-panel p {
+    font-size: 14px;
+    margin-bottom: 25px;
+    color: #eee;
+}
+
+.toggle-panel .btn {
+    width: 150px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.toggle-panel .btn:hover {
+    background: #fff;
+    color: #333;
+}
+
+
+/* Общий фон */
+
+@media (max-width: 768px) {
+    .burger {
+        display: block;
+    }
+    .navbar-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #7c7b7b;
+        padding: 10px 0;
+    }
+    .navbar-menu li {
+        width: 100%;
+        text-align: left;
+    }
+    .navbar-menu li a {
+        display: block;
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .navbar-menu.active {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    .slider {
+        height: 250px;
+        max-width: 90%;
+    }
+    .opisaniu {
+        font-size: 24px;
+        top: 110%;
+        left: 10%;
+        margin-top: 60rem;
+    }
+    .text-main {
+        font-size: 24px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        margin-top: 65rem;
+        text-align: center;
+    }
+    .container__cards {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        row-gap: 100px;
+        column-gap: 50px;
+        margin-top: 500px;
+    }
+    .card {
+        width: 180px;
+        height: 300px;
+    }
+    .navbar-brand {
+        font-size: 20px;
+    }
+    .navbar-menu li a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider {
+        height: 200px;
+    }
+    .opisaniu {
+        font-size: 20px;
+        top: 115%;
+        left: 5%;
+    }
+    .text-main {
+        font-size: 20px;
+        margin-top: 60rem;
+    }
+    .container__cards {
+        grid-template-columns: 1fr;
+        row-gap: 80px;
+        margin-top: 400px;
+    }
+    .card {
+        width: 160px;
+        height: 260px;
+    }
+    .navbar {
+        height: auto;
+        padding: 10px 0;
+    }
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-menu li {
+        display: block;
+        margin: 5px 0;
+    }
+    .navbar-brand {
+        padding-left: 10px;
+    }
+}
