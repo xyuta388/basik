@@ -4,7 +4,7 @@ use InvalidArgumentException;
 
 class Config
 {
-    // настройки подключения
+    // Настройки подключения к БД
     const MYSQL_DNS = 'mysql:dbname=is221;host=localhost';
     const MYSQL_USER = 'root';
     const MYSQL_PASSWORD = '';   
@@ -14,36 +14,36 @@ class Config
     // Режим хранения данных 
     const TYPE_FILE = "file";
     const TYPE_DB = "db";
-    const STORAGE_TYPE = self::TYPE_DB; // Установите значение по умолчанию
+    const STORAGE_TYPE = self::TYPE_DB;
+
+    // Пути к файлам (исправлены на абсолютные/относительные пути)
+    const FILE_PRODUCTS = __DIR__ . "/../storage/data.json"; 
+    const FILE_ORDERS = __DIR__ . "/../storage/order.json"; 
     
-    const FILE_PRODUCTS = "./storage/data.json"; // Путь к файлу для сохранения данных о товаре
-    const FILE_ORDERS = "./storage/order.json"; // Путь к файлу для сохранения заказов
-    const SITE_URL="https://localhost/pizza221";
+    // Добавлен пропущенный `const` для SITE_URL
+    const SITE_URL = "https://localhost/basik2";
+
+    // Константы статусов (для PHP < 7.1 удалите модификатор `public`)
     public const CODE_STATUS = [
         "без статуса",
         "в работе",
-        "доставляется",
         "завершен"
     ];
+    
     public const STATUS_COLORS = [
-        "text-muted", // без статуса
+        "text-muted",   // без статуса
         "text-warning", // в работе
-        "text-info", // доставляется
-        "text-success" // завершен
+        "text-success"  // завершен
     ];
     
     public static function getStatusName(int $code): string {
         if (isset(self::CODE_STATUS[$code])) {
             return self::CODE_STATUS[$code];
-        } else {
-            throw new InvalidArgumentException("Invalid status code: " . $code);
         }
+        throw new InvalidArgumentException("Недопустимый код статуса: " . $code);
     }
+    
     public static function getStatusColor(int $code): string {
-        if (isset(self::STATUS_COLORS[$code])) {
-            return self::STATUS_COLORS[$code];
-        } else {
-            return "text-muted"; // Цвет по умолчанию, если статус не найден
-        }
+        return self::STATUS_COLORS[$code] ?? "text-muted";
     }
 }

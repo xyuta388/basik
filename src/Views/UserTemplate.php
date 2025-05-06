@@ -66,7 +66,7 @@ class UserTemplate extends BaseTemplate
             $colorStyle = Config::getStatusColor($row['status']); // Предполагается, что вы добавили этот метод
             $content .= <<<TABLE
             <tr>    
-                <td>Заказ #{$row['id']}</td>
+                <td>Запись #{$row['id']}</td>
                 <td>{$orderDate}</td>
                 <td>{$row['all_sum']} ₽</td>
                 <td class="{$colorStyle}">{$nameStatus}</td>
@@ -87,7 +87,7 @@ class UserTemplate extends BaseTemplate
         $email = htmlspecialchars($userData['email'] ?? '');
         $address = htmlspecialchars($userData['address'] ?? '');
         $phone = htmlspecialchars($userData['phone'] ?? '');
-        $avatar = htmlspecialchars($userData['avatar'] ?? '/assets/images/default-avatar.png'); // значение по умолчанию
+        $avatar = htmlspecialchars($userData['avatar'] ?? 'assets/images/аватар.png'); // значение по умолчанию
         $content = <<<HTML
         <style>
             .custom-input-group {
@@ -293,7 +293,7 @@ class UserTemplate extends BaseTemplate
                                     reader.readAsDataURL(file);
                                 } else {
                                     // Если файл не выбран, возвращаем аватар по умолчанию
-                                    avatarPreview.src = '/assets/images/default-avatar.png';
+                                    avatarPreview.src = 'assets/images/аватар.png';
                                 }
                             });
                         }

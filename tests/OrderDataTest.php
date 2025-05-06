@@ -4,23 +4,73 @@ use App\Services\ValidateOrderData;
 
 class OrderDataTest extends TestCase 
 {
-    private array $data;
-    private ValidateOrderData $obj;
+    private ValidateOrderData $validator;
 
-    public function setUp():void {
-        // Массив валидных данных для передачи в метод
-        $this->data = [];
-        $this->data['fio'] = "Иванов";
-        $this->data['address'] = "Кемерово, ул.Тухачевского 32";
-        $this->data['phone'] = "89007009911";
-        $this->data['email'] = "ivanov@example.com";
-        // Объект класса ValidateOrderData
-        $this->obj = new ValidateOrderData();
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->validator = new ValidateOrderData();
     }
 
-    public function testValidateOrderData(): void {
-        $this->assertSame( true, 
-                           $this->obj->validate($this->data) );
+    /**
+     * Тест корректных данных заказа
+     */
+    public function testValidOrderData(): void
+    {
+        $validData = [
+            'customer_name' => 'Иван Петров',
+            'email' => 'ivan@example.com',
+            'phone' => '+79161234567',
+            'address' => 'ул. Пушкина, д. 10',
+            'items' => [
+                ['product_id' => 1, 'quantity' => 2]
+            ]
+        ];
+
+        $this->assertTrue($this->validator->validate($validData));
     }
 
+    /**
+     * Тест отсутствия обязательного поля (customer_name)
+     */
+    public function testMissingRequiredField(): void
+    {
+        $invalidData = [
+            'email' => 'ivan@example.com',
+            'items' => [['product_id' => 1]]
+        ];
+
+        $this->expectException(\InvalidArgumentException::class);
+        $this->validator->validate($invalidData);
+    }
+
+    /**
+     * Тест невалидного email
+     */
+    public function testInvalidEmail(): void
+    {
+        $invalidData = [
+            'customer_name' => 'Иван Петров',
+            'email' => 'invalid-email',
+            'items' => [['product_id' => 1]]
+        ];
+
+        $this->expectException(\InvalidArgumentException::class);
+        $this->validator->validate($invalidData);
+    }
+
+    /**
+     * Тест пустой корзины товаров
+     */
+    public function testEmptyItems(): void
+    {
+        $invalidData = [
+            'customer_name' => 'Иван Петров',
+            'email' => 'ivan@example.com',
+            'items' => []
+        ];
+
+        $this->expectException(\InvalidArgumentException::class);
+        $this->validator->validate($invalidData);
+    }
 }

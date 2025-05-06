@@ -13,13 +13,13 @@ class HomeTemplate extends BaseTemplate {
 <div class="carousel-inner">
 <!-- Слайды -->
 <div class="carousel-item active">
-    <img src="/pizza221/assets/images/puma.png" class="d-block w-100" alt="первый">
+    <img src="assets/images/а1.png" class="d-block w-100" alt="первый">
 </div>
 <div class="carousel-item">
-    <img src="/pizza221/assets/images/fila.png" class="d-block w-100" alt="второй">
+    <img src="assets/images/а2.png" class="d-block w-100" alt="второй">
 </div>
 <div class="carousel-item">
-    <img src="/pizza221/assets/images/demix.png" class="d-block w-100" alt="третий">  
+    <img src="assets/images/фон (2).png" class="d-block w-100" alt="третий">  
 </div>
 <!-- Контроллеры карусели -->
 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

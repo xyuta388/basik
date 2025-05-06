@@ -2,21 +2,21 @@
     {
       "id": 1,
       "name": "Занятие группой",
-      "image": "https://localhost/basik2/assets/images/puma.png",
+      "image": "assets/images/группа.png",
       "description": "Обучение плаванью группой.",
       "price": 1500
     },
     {
       "id": 2,
       "name": "Сауна",
-      "image": "https://localhost/pizza221/assets/images/fila.png",
+      "image": "assets/images/сауна.png",
       "description": "Любительская сауна с разными режимами температуры, а также комфорт для каждого человека.",
       "price": 1000
     },
     {
       "id": 3,
       "name": "Плавание не группой ",
-      "image": "https://localhost/basik2/assets/images/demix.png",
+      "image": "assets/images/Бассейн.png",
       "description": "Обычное плаванье в уютном бассейне.",
       "price": 700
     }
